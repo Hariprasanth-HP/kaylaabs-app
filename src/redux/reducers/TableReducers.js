@@ -1,51 +1,35 @@
 import * as actions from "../constants/TableConstants";
 
 const initialState = {
-  posts: [],
+  details: [],
   searchResults: [],
   page: 1,
 };
 
 export const TableReducers = (state = initialState, action) => {
   switch (action.type) {
-    case actions.FETCH_POST_REQUEST:
+    case actions.FETCH_DETAIL_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case actions.FETCH_POST_SUCCESS:
+    case actions.FETCH_DETAIL_SUCCESS:
       return {
         ...state,
         loading: false,
-        posts: action.payload.data,
+        details: action.payload.data,
         searchResults: action.payload.data,
       };
-    case actions.FETCH_POST_FAILED:
+    case actions.FETCH_DETAIL_FAILED:
       return {
         ...state,
         loading: false,
         error: action.payload,
       };
-    case actions.SORT_POSTS_ASC:
-      const sortAsc = action.payload.sort((a, b) =>
-        a.title < b.title ? 1 : a.title > b.title ? -1 : 0
-      );
+    case actions.SEARCH_DETAIL:
       return {
         ...state,
-        posts: sortAsc,
-      };
-    case actions.SORT_POSTS_DESC:
-      const sortDesc = action.payload.sort((a, b) =>
-        a.title < b.title ? -1 : a.title > b.title ? 1 : 0
-      );
-      return {
-        ...state,
-        posts: sortDesc,
-      };
-    case actions.SEARCH_POSTS:
-      return {
-        ...state,
-        posts: action.payload,
+        details: action.payload,
         page: 1,
       };
     default:

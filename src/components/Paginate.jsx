@@ -1,7 +1,13 @@
+import { Button } from "@mui/material";
 import React from "react";
-
-const Paginate = ({ currentPage, setCurrentPage, totalPosts, postPerPage }) => {
-  const totalPages = Math.ceil(totalPosts / postPerPage);
+import "./styles.css";
+const Paginate = ({
+  currentPage,
+  setCurrentPage,
+  totalDetails,
+  detailPerPage,
+}) => {
+  const totalPages = Math.ceil(totalDetails / detailPerPage);
 
   let pages = [];
 
@@ -12,12 +18,13 @@ const Paginate = ({ currentPage, setCurrentPage, totalPosts, postPerPage }) => {
   return (
     <ul className="pagination">
       <li className={`page-item ${currentPage === 1 && `disabled`}`}>
-        <button
+        <Button
           className="page-link"
           onClick={() => setCurrentPage(currentPage - 1)}
+          variant="contained"
         >
           &laquo;
-        </button>
+        </Button>
       </li>
       {pages.map((page) => (
         <li
@@ -25,16 +32,19 @@ const Paginate = ({ currentPage, setCurrentPage, totalPosts, postPerPage }) => {
           className={`page-item ${page === currentPage && `active`}`}
           onClick={() => setCurrentPage(page)}
         >
-          <button className="page-link">{page}</button>
+          <Button className="page-link" variant="contained">
+            {page}
+          </Button>
         </li>
       ))}
       <li className={`page-item ${currentPage === totalPages && `disabled`}`}>
-        <button
+        <Button
           className="page-link"
           onClick={() => setCurrentPage(currentPage + 1)}
+          variant="contained"
         >
           &raquo;
-        </button>
+        </Button>
       </li>
     </ul>
   );

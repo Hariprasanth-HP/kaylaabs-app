@@ -1,0 +1,27 @@
+td,
+th {
+  width: 50px;
+}
+.pagination {
+  display: flex;
+  padding-left: 0;
+  list-style: none;
+  border-radius: 0.25rem;
+  align-items: center;
+  justify-content: center;
+}
+.title {
+  padding-top: 10px;
+  justify-content: center;
+  display: flex;
+}
+@media screen and (max-width: 992px) {
+  .pagination {
+    display: flex;
+    padding: 26px 0 0 0px;
+    list-style: none;
+    border-radius: 0.25rem;
+    align-items: center;
+    justify-content: center;
+  }
+}

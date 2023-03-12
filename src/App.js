@@ -1,13 +1,11 @@
 import logo from "./logo.svg";
 import "./App.css";
-import TablePage from "./components/Table-page";
-import Posts from "./components/Posts";
+import TablePage from "./components/TablePage";
 
 function App() {
   return (
     <div className="App">
-      <Posts />
-      {/* <TablePage /> */}
+      <TablePage />
     </div>
   );
 }
