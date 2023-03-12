@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { TextField } from "@mui/material";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { searchDetails } from "../redux/actions/TableAction";
 import "./styles.css";
@@ -14,11 +15,13 @@ const Header = ({ search, onChange }) => {
     <header>
       <div className="title">
         <h4>Data Table</h4>&nbsp;&nbsp;&nbsp;&nbsp;
-        <input
+        <TextField
+          id="outlined-basic"
+          label="Search"
+          variant="outlined"
           type="text"
           value={search}
           onChange={onChange}
-          placeholder="Search"
         />
       </div>
     </header>

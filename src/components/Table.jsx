@@ -11,7 +11,7 @@ const Table = ({ filterDetails }) => {
   return (
     <div class=" w-100 p-1 " style={{ height: "548px" }}>
       <table class="table table-hover table-bordered">
-        <thead class="thead-dark">
+        <thead class="thead-dark h-25">
           <tr>
             <th scope="col">ID</th>
             <th class="text-left " scope="col">
@@ -31,7 +31,7 @@ const Table = ({ filterDetails }) => {
         <tbody>
           {filterDetails.map((detail) => {
             return (
-              <tr key={detail.id}>
+              <tr class="m-0 p-0 h-25" key={detail.id}>
                 <th scope="row">{detail.id}</th>
                 <td class="text-left text-truncate">
                   {truncate(detail.name, 20)}

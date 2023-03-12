@@ -14,6 +14,7 @@ th {
   padding-top: 10px;
   justify-content: center;
   display: flex;
+  align-items: center;
 }
 @media screen and (max-width: 992px) {
   .pagination {
