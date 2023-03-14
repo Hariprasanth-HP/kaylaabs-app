@@ -1,11 +1,13 @@
 import * as actions from "../constants/TableConstants";
 import axios from "axios";
 
-export const fetchDetails = () => async (dispatch) => {
+export const fetchDetails = (pageNum) => async (dispatch) => {
   dispatch({ type: actions.FETCH_DETAIL_REQUEST });
 
   try {
-    const data = await axios.get("https://api.punkapi.com/v2/beers");
+    const data = await axios.get(
+      `https://api.punkapi.com/v2/beers?page=${pageNum}&per_page=10`
+    );
     dispatch({ type: actions.FETCH_DETAIL_SUCCESS, payload: data });
   } catch (error) {
     dispatch({ type: actions.FETCH_DETAIL_FAILED, payload: error.message });

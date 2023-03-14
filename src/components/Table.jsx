@@ -29,7 +29,7 @@ const Table = ({ filterDetails }) => {
           </tr>
         </thead>
         <tbody>
-          {filterDetails.map((detail) => {
+          {(filterDetails ?? []).map((detail) => {
             return (
               <tr class="m-0 p-0 h-25" key={detail.id}>
                 <th scope="row">{detail.id}</th>

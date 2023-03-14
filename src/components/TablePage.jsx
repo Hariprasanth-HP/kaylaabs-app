@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDetails } from "../redux/actions/TableAction";
 import Header from "./Header";
-import Paginate from "./Paginate";
 import Table from "./Table";
-
+import { Pagination } from "./Pagination";
 const TablePage = () => {
   const [search, setSearch] = useState("");
   const dispatch = useDispatch();
@@ -13,19 +12,16 @@ const TablePage = () => {
 
   const handleChangeSearch = (e) => {
     if (e.target.value.length > 0) {
-      setCurrentPage(1);
+      setCurrentPage(currentPage);
     }
     setSearch(e.target.value);
   };
 
   useEffect(() => {
-    dispatch(fetchDetails());
-  }, [dispatch]);
-  const detailPerPage = 10;
-  const totalDetails = details.length;
-  const indexOfLastdetail = currentPage * detailPerPage;
-  const indexOfFirstdetail = indexOfLastdetail - detailPerPage;
-  const filterDetails = details.slice(indexOfFirstdetail, indexOfLastdetail);
+    dispatch(fetchDetails(currentPage));
+  }, [dispatch, currentPage]);
+  const totalDetails = 20;
+  const filterDetails = details;
   return (
     <>
       <Header
@@ -33,14 +29,14 @@ const TablePage = () => {
         setSearch={setSearch}
         onChange={handleChangeSearch}
       />
+
       <div className="container">
         <Table filterDetails={filterDetails} />
-        {totalDetails > detailPerPage && (
-          <Paginate
-            currentPage={currentPage}
-            setCurrentPage={setCurrentPage}
-            totalDetails={totalDetails}
-            detailPerPage={detailPerPage}
+        {totalDetails && (
+          <Pagination
+            pageIndex={currentPage}
+            setPageIndex={setCurrentPage}
+            pageCount={totalDetails}
           />
         )}
       </div>
